@@ -10,17 +10,17 @@ const knex = require('knex')({
     }
 });
 
-knex.schema.hasTable('councilpost').then((exists) => {
+knex.schema.hasTable('councilmembers').then((exists) => {
     if(!exists){
-        return knex.schema.createTable('councilpost', (columnName) => {
+        return knex.schema.createTable('councilmembers', (columnName) => {
             columnName.increments('id').primary();
-            columnName.string("disciplineCname");
-            columnName.string("foodCname");
-            columnName.string("treaSurername");
-            columnName.string("facilityMname");
-            columnName.string("trainingPCname");
-            columnName.string("genSecname");
-            columnName.string("healthCname");
+            columnName.string("studentName");
+            columnName.string("councilPost");
+            columnName.string("workofPost");
+            columnName.string("councilSdate");
+            columnName.string("learning");
+            columnName.integer("spentTimeonPost");
+            columnName.integer("remaingDays");
         })
         .then(() => {
             console.log("table created");
@@ -29,6 +29,5 @@ knex.schema.hasTable('councilpost').then((exists) => {
         });
     };
 });
-
 
 module.exports = knex;
